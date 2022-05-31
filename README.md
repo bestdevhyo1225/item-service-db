@@ -27,4 +27,8 @@ public interface ItemRepository {
 ### ApplicationReadyEvent
 
 사용법은 `@EventListener(ApplicationReadyEvent.class)` 형식으로 작성하면 된다. AOP를 포함한 스프링 컨테이너가 완전히 초기화 된 이후에 호출된다.
-보통 `@PostConstruct` 를 사용해서 초기화 작업을 진행하기도 하는데, AOP 부분이 다 적용(처리)되지 않은 시점에 호출될 수 있기 때문에 간혹 문제가 발생할 수 있다.  
+보통 `@PostConstruct` 를 사용해서 초기화 작업을 진행하기도 하는데, AOP 부분이 다 적용(처리)되지 않은 시점에 호출될 수 있기 때문에 간혹 문제가 발생할 수 있다.
+
+### 인터페이스를 테스트하자
+
+구현체 대신에 `인터페이스` 를 테스트 하게 되면, 나중에 다른 구현체로 변경되었을 때 해당 구현체가 잘 동작하는지 같은 테스트로 편리하게 검증할 수 있다.
