@@ -37,3 +37,8 @@ public interface ItemRepository {
 
 - 테스트는 다른 테스트와 격리해야 한다.
 - 테스트는 반복해서 실행할 수 있어야 한다.
+
+## @Transactional 원리
+
+`@Transactional` 은 로직이 성공적으로 수행되면, `Commit` 하도록 동작한다. 그런데 테스트에서 사용하면, 아주 특별하게 동작한다. `@Transactional` 이 테스트에 있으면,
+스프링은 테스트를 트랜잭션 안에서 실행하고, 테스트가 끝나면 트랜잭션을 자동으로 `Rollback` 한다.
