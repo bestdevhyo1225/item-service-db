@@ -42,3 +42,11 @@ public interface ItemRepository {
 
 `@Transactional` 은 로직이 성공적으로 수행되면, `Commit` 하도록 동작한다. 그런데 테스트에서 사용하면, 아주 특별하게 동작한다. `@Transactional` 이 테스트에 있으면,
 스프링은 테스트를 트랜잭션 안에서 실행하고, 테스트가 끝나면 트랜잭션을 자동으로 `Rollback` 한다.
+
+## @Repository 기능
+
+- `@Repository` 가 붙은 클래스는 컴포넌트 스캔의 대상이 된다.
+- `@Repository` 가 붙은 클래스는 예외 변환 AOP의 적용 대상이 된다.
+    - 스프링과 JPA를 함께 사용하는 경우, 스프링은 JPA 예외 변환기 `PersistenceExceptionTranslator` 를 등록한다.
+    - 예외 변환 AOP 프록시는 JPA 관련 예외가 발생하면 JPA 예외 변환기를 통해 발생한 예외를 스프링 데이터 접근 예외로 변환한다.
+    - `PersistenceException` -> `DataAccessException` 으로 변환해준다.
